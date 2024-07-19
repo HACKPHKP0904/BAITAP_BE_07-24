@@ -17,17 +17,8 @@ namespace BAITTAPBE_01
         {
             // Bài 1: Viết chương trình C# để giải bài tập tìm tổng hai số , tích 2 số , hiệu 2 số 
             Console.OutputEncoding = Encoding.UTF8;
-            float firstnumber, twonumber;
-            Console.WriteLine("Nhập vào a :");
-            while (!float.TryParse(Console.ReadLine(), out firstnumber))
-            {
-                Console.WriteLine("Giá trị không hợp lệ , vui lòng nhập lại a:");
-            }
-            Console.WriteLine("Nhập vào b :");
-            while (!float.TryParse(Console.ReadLine(), out twonumber))
-            {
-                Console.WriteLine("Giá trị không hợp lệ , vui lòng nhập lại b:");
-            }
+            float firstnumber = ReadLineFloat("Nhập vào a");
+            float twonumber = ReadLineFloat("Nhập vào b");
 
             Console.WriteLine("Tổng 2 số {0} và {1} là {2}", firstnumber, twonumber, firstnumber + twonumber);
             Console.WriteLine("Hiệu 2 số {0} và {1} là {2}", firstnumber, twonumber, firstnumber - twonumber);
@@ -55,12 +46,7 @@ namespace BAITTAPBE_01
             }
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine("Giải phương trình bậc 2 ax^2 + bx + c =0");
-            float threenumber;
-            Console.WriteLine("Nhập vào số c :");
-            while (!float.TryParse(Console.ReadLine(), out threenumber))
-            {
-                Console.WriteLine("Giá trị không hợp lệ, vui lòng nhập lại c ");
-            }
+            float threenumber = ReadLineFloat("Nhập vào số c");
             if (firstnumber != 0)
             {
                 if (twonumber != 0)
@@ -146,13 +132,7 @@ namespace BAITTAPBE_01
             //Bài 3: Viết chương trình C# để giải bài tập chuyển đổi độ C thành độ K và độ F trong C# 
             Console.WriteLine("------------------------------------------------");
             Console.WriteLine("Bài tập chuyễn đổi độ C");
-            float do_C;
-            Console.WriteLine("Nhập vào độ C :");
-            while (!float.TryParse(Console.ReadLine(), out do_C))
-            {
-                Console.WriteLine("Giá trị không hợp lệ , vui lòng nhâp lại độ C");
-            }
-
+            float do_C = ReadLineFloat("Nhập vào độ C");
             float do_K = 1 * do_C + 273;
             Console.WriteLine("Đổi sang độ K ");
             Console.WriteLine("Độ K = {0}", do_K);
@@ -160,7 +140,16 @@ namespace BAITTAPBE_01
             Console.WriteLine("Đổi sang độ F");
             Console.WriteLine("Độ F = {0} ", do_F);
             Console.ReadLine();
-
+        }
+        static float ReadLineFloat(string promt)
+        {
+            float number;
+            Console.WriteLine(promt);
+            while(!float.TryParse(Console.ReadLine(), out number))
+            {
+                Console.WriteLine("Giá trị không hợp lệ , vui lòng nhập lại");
+            }
+            return number;
         }
     }
 }
